@@ -8,13 +8,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.suitmediaaplication.databinding.FragmentSecondBinding
-import com.example.suitmediaaplication.viewModel.SecondViewModel
+import com.example.suitmediaaplication.viewModel.SharedViewModel
 
 
 class SecondFragment : Fragment() {
 
     private lateinit var binding: FragmentSecondBinding
-    private lateinit var viewModel : SecondViewModel
+    private lateinit var viewModel : SharedViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,12 +33,11 @@ class SecondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity()).get(SecondViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
 
-        val name = viewModel.name.value ?: arguments?.getString("name")
+        val name = viewModel.name.value ?: ""
         binding.tvName.text = name
 
-        viewModel.name.value = name
         val fullName = arguments?.getString("fullName")
         if (fullName != null) {
             if (fullName.isNotEmpty()) {

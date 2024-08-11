@@ -1,12 +1,13 @@
 package com.example.suitmediaaplication
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import com.example.suitmediaaplication.databinding.FragmentFirstBinding
+import com.example.suitmediaaplication.viewModel.SharedViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 
@@ -14,6 +15,7 @@ class FirstFragment : Fragment() {
 
 
     private lateinit var binding : FragmentFirstBinding
+    private lateinit var viewModel : SharedViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -30,6 +32,7 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
         binding.btnCheck.setOnClickListener { checkPalindrome() }
         binding.btnNext.setOnClickListener { nextActivity() }
     }
@@ -43,6 +46,7 @@ class FirstFragment : Fragment() {
         val fragmentManager = parentFragmentManager
         val secondFragment = SecondFragment()
         val bundle = Bundle()
+        viewModel.name.value = name
         binding.nameEditText.text?.clear()
         bundle.putString("name", name)
         secondFragment.arguments = bundle
