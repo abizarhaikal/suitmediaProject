@@ -63,7 +63,9 @@ class SecondFragment : Fragment() {
                 thirdFragment,
                 ThirdFragment::class.java.simpleName
             )
+            addToBackStack(null)
             commit()
+
         }
     }
 
@@ -72,4 +74,6 @@ class SecondFragment : Fragment() {
             parentFragmentManager.popBackStack()
         }
     }
+
+
 }

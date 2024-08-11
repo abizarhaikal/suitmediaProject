@@ -89,10 +89,12 @@ class ThirdFragment : Fragment() {
                     arguments = bundle
                 }
 
-                // Mengganti Fragment saat ini dengan DestinationFragment dan mengirim data
+                parentFragmentManager.popBackStack()
+
                 parentFragmentManager.beginTransaction()
                     .replace(R.id.fragment_container, fragment)
                     .commit()
+
             }
         })
 
