@@ -1,6 +1,7 @@
 <resources>
     <color name="black">#04021D</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="textColor">#FFFFFFFF</color>
     <color name="background_button">#2B637B</color>
     <color name="md_theme_primary">#8CCFF0</color>
     <color name="md_theme_onPrimary">#003547</color>
