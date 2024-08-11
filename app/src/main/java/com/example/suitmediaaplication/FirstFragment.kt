@@ -43,6 +43,7 @@ class FirstFragment : Fragment() {
         val fragmentManager = parentFragmentManager
         val secondFragment = SecondFragment()
         val bundle = Bundle()
+        binding.nameEditText.text?.clear()
         bundle.putString("name", name)
         secondFragment.arguments = bundle
         fragmentManager.beginTransaction().apply {
